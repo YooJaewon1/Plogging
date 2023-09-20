@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Plogging</title>
+
+	<style type="text/css">
+	@font-face {
+    font-family: 'LotteriaChab';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/LotteriaChab/LotteriaChab.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/LotteriaChab/LotteriaChab.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/LotteriaChab/LotteriaChab.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/LotteriaChab/LotteriaChab.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/LotteriaChab/LotteriaChab.ttf') format("truetype");
+    font-display: swap;}
+	@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+		
+		body {margin: 0;
+			text-align: center;
+			background-image: url('track.jpg');
+			background-size: cover;
+		}
+
+		header {background: white;
+			background-color: rgba(255, 255, 255, 0.8);
+		}
+
+		h1 {margin: 0;
+			font-family: 'LotteriaChab';
+			font-size: 4.5rem;
+			color: seagreen;
+			padding: 5px;
+			word-spacing: 1.5rem;
+		}
+
+		h2 {margin: 0;
+			font-family: 'GmarketSansMedium';
+			padding: 15px;
+			color: indianred;
+			font-size: 1.2rem;
+		}
+
+		.box {width: 150px;	height: 150px;
+			position: absolute;	left: 200px; top: 200px;
+		}
+
+		img {display: block; width: 100%;
+		}
+		#fixed-image{position: fixed;
+			top:380px; left:600px; width:70%; height: auto;}
+	</style>
+</head>
+<body>
+	<img src="forest.png" alt="고정" id="fixed-image">
+	<header>
+		<h1> Plogging </h1>
+		<h2> 한강 달리면서 쓰레기 줍깅 </h2>
+	</header>
+
+	<div id="main">
+		<script type="text/javascript">
+
+			var images = ["bag1.png", "trash1.png", "trash2.png"];
+			var currentIndex = 0;
+
+			function createTrash() {
+				var trash = document.createElement("img");
+				trash.src = images[currentIndex];
+				trash.id = "trash";
+				trash.className = "box";
+				var b = Math.random() * (window.innerWidth - 150);
+				var c = Math.random() * (window.innerHeight - 150);
+				trash.style.left = b + "px";
+				trash.style.top = c + "px";
+				trash.onclick = function () {
+					trash.parentNode.removeChild(trash);
+					currentIndex = (currentIndex + 1) % images.length;
+					createTrash();
+				}
+				document.getElementById("main").appendChild(trash);
+			}
+			createTrash();
+		</script>
+	</div>
+</body>
+</html>
+</html>
